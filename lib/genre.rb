@@ -2,7 +2,9 @@ require "pry"
 
 class Genre
 
-    attr_accessor :name, :artist
+    extend Concerns::Findable
+
+    attr_accessor :name, :artist, :songs
 
     @@all = []
 
@@ -10,6 +12,7 @@ class Genre
         @name = name
         @@all << self
         save
+        @songs = []
     end
 
     def save
@@ -25,9 +28,12 @@ class Genre
     end
 
     def self.create(name)
-        new_genre = Genre.new(name)
-        @@all << new_genre
-        return new_genre
+        self.new(name)
+    end
+
+    def artists
+        artists = @songs.collect {|song| song.artist}
+        artists.uniq
     end
 
 end
