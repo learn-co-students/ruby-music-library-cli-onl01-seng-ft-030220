@@ -2,7 +2,7 @@ require "pry"
 
 class Genre
 
-    attr_accessor :name
+    attr_accessor :name, :artist
 
     @@all = []
 
