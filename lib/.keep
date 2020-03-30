@@ -1,0 +1,6 @@
+class Song 
+
+def initialize(name)
+new_song = Song.new(name)
+end 
+
